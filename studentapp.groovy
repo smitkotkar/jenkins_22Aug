@@ -23,6 +23,13 @@ pipeline {
                }
             }
         }
+        stage('quality-gate') {
+            steps {
+                timeout (time:10, unit:'MINUTES') {
+                    waitforQualityGate abortPipeline:true
+                }
+            }
+        }
         stage ('Deploy') {
             steps {
                 echo 'Deploy succeed'
