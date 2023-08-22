@@ -32,7 +32,7 @@ pipeline {
         // }
         stage ('Deploy') {
             steps {
-                echo 'Deploy succeed'
+                deploy adapters: [tomcat8(credentialsId: 'sonar-cred', path: '', url: 'http://18.212.129.233:8080')], contextPath: '/', war: '**/*.war'
             }
         }
     }
